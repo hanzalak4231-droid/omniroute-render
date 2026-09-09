@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: omniroute-server
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: NODE_ENV
+        value: production
+      - key: RENDER_EXTERNAL_URL
+        fromService: true
+    autoDeploy: true
+    disk:
+      - name: omniroute-data
+        mountPath: /home/site/.omniroute
+        sizeGB: 1
