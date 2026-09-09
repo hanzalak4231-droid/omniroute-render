@@ -1,18 +1,12 @@
 services:
   - type: web
-    name: omniroute-server
-    env: python
+    name: omniroute-render
+    runtime: docker
     region: oregon
-    buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
+    autoDeploy: true
     envVars:
       - key: PORT
         value: "10000"
-      - key: NODE_ENV
-        value: production
-      - key: RENDER_EXTERNAL_URL
-        fromService: true
-    autoDeploy: true
     disk:
       - name: omniroute-data
         mountPath: /home/site/.omniroute
