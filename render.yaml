@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: omniroute-render
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    port: 10000
+    healthCheckPath: /
+    maxShutdownDelay: 10
